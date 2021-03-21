@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/chooserFragment">
+
+    <fragment
+        android:id="@+id/chooserFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.chooser.ChooserFragment"
+        android:label="chooser_fragment"
+        tools:layout="@layout/chooser_fragment" >
+        <action
+            android:id="@+id/action_chooserFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.categories.CategoriesFragment"
+        android:label="categories_fragment"
+        tools:layout="@layout/categories_fragment" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_newCategoryDetailsFragment"
+            app:destination="@id/newCategoryDetailsFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_particularCategoryFragment"
+            app:destination="@id/particularCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCategoryDetailsFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.categories.new_category_details.NewCategoryDetailsFragment"
+        android:label="new_category_details_fragment"
+        tools:layout="@layout/new_category_details_fragment" />
+    <fragment
+        android:id="@+id/particularCategoryFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.categories.particular_category.ParticularCategoryFragment"
+        android:label="particular_category_fragment"
+        tools:layout="@layout/particular_category_fragment" >
+        <action
+            android:id="@+id/action_particularCategoryFragment_to_newItemDetailsFragment"
+            app:destination="@id/newItemDetailsFragment" />
+        <argument
+            android:name="category"
+            app:argType="com.savage9ishere.tiwarimartadmin.categories.Category" />
+        <action
+            android:id="@+id/action_particularCategoryFragment_to_updateParticularCategoryFragment"
+            app:destination="@id/updateParticularCategoryFragment" />
+        <action
+            android:id="@+id/action_particularCategoryFragment_to_updateParticularItemFragment"
+            app:destination="@id/updateParticularItemFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newItemDetailsFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.categories.particular_category.new_item_details.NewItemDetailsFragment"
+        android:label="new_item_details_fragment"
+        tools:layout="@layout/new_item_details_fragment" />
+    <fragment
+        android:id="@+id/updateParticularCategoryFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.categories.particular_category.update_particular_category.UpdateParticularCategoryFragment"
+        android:label="update_particular_category_fragment"
+        tools:layout="@layout/update_particular_category_fragment" />
+    <fragment
+        android:id="@+id/updateParticularItemFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.categories.particular_category.update_particular_item.UpdateParticularItemFragment"
+        android:label="UpdateParticularItemFragment" />
+</navigation>
