@@ -77,7 +77,7 @@ class ItemsAdapter(
 
         fun bind(item: NewItemDetailsViewModel.Item) {
             currentItem = item
-            val itemNameStr = item.name + " " + item.qty
+            val itemNameStr = item.name + " " + item.size
             itemName.text = itemNameStr
 
             binding.checkBox.visibility = View.GONE

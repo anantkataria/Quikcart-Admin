@@ -3,6 +3,7 @@ package com.savage9ishere.tiwarimartadmin.categories.particular_category.new_ite
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,7 @@ class NewItemDetailsFragment : Fragment() {
     }
 
     private lateinit var viewModel: NewItemDetailsViewModel
+    private var inStock = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,12 +36,22 @@ class NewItemDetailsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(NewItemDetailsViewModel::class.java)
 
-        val adapter = ItemPhotosAdapter({
+        val adapter = ItemPhotosAdapter {
             viewModel.removeItem(it)
-        })
+        }
+
         binding.recyclerViewItemPhotos.adapter = adapter
         val horizontalLayoutManger = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerViewItemPhotos.layoutManager = horizontalLayoutManger
+
+        val adapter2 = OtherSizesAdapter{
+            viewModel.removeOtherSize(it)
+        }
+
+        val newSizesRecyclerView = binding.newSizesRecyclerView
+        newSizesRecyclerView.adapter = adapter2
+        newSizesRecyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
         binding.lifecycleOwner = this
 
 
@@ -49,6 +61,17 @@ class NewItemDetailsFragment : Fragment() {
             }
             if(intent.resolveActivity(requireActivity().packageManager) != null){
                 startActivityForResult(intent, REQUEST_IMAGE_GET)
+            }
+        }
+
+        binding.stockAvailabilityButton.setOnClickListener {
+            if (inStock){
+                inStock = false
+                binding.stockAvailabilityButton.text = "Change to Stock Available"
+            }
+            else {
+                inStock = true
+                binding.stockAvailabilityButton.text = "Change to Not In Stock"
             }
         }
 
@@ -80,9 +103,42 @@ class NewItemDetailsFragment : Fragment() {
 
             if(!somethingIsEmpty){
                 //now we can send items to database
-                viewModel.sendToDatabase(array, categoryName)
+                viewModel.sendToDatabase(array, categoryName, inStock)
             }
         }
+
+        val textInputLayout7 = binding.textInputLayout7
+        val textInputLayout8 = binding.textInputLayout8
+        val addNewSizeButton = binding.addNewSizeButton
+
+        binding.addNewSizeImage.setOnClickListener {
+            textInputLayout7.visibility = View.VISIBLE
+            textInputLayout8.visibility = View.VISIBLE
+            addNewSizeButton.visibility = View.VISIBLE
+        }
+
+        binding.addNewSizeButton.setOnClickListener {
+            val size = textInputLayout7.editText?.text.toString()
+            val price = textInputLayout8.editText?.text.toString()
+            Log.e("111", "size = $size, price = $price")
+            viewModel.addToOtherSizes(size, price)
+            textInputLayout7.visibility = View.GONE
+            textInputLayout8.visibility = View.GONE
+            addNewSizeButton.visibility = View.GONE
+        }
+
+        viewModel.otherSizes.observe(viewLifecycleOwner, {
+            it?.let {
+                val list = it.toList()
+                if(list.isNotEmpty()){
+                   binding.newSizesRecyclerView.visibility = View.VISIBLE
+                }
+                else{
+                    binding.newSizesRecyclerView.visibility = View.GONE
+                }
+                adapter2.submitList(it.toList())
+            }
+        })
 
         viewModel.itemImages.observe(viewLifecycleOwner, Observer {
             it?.let {

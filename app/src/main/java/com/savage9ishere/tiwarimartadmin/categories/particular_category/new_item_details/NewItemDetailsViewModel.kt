@@ -12,6 +12,8 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.parcelize.Parcelize
 
+private var inStockk : Boolean? = null
+
 class NewItemDetailsViewModel : ViewModel() {
 
     private val storage = Firebase.storage
@@ -43,6 +45,12 @@ class NewItemDetailsViewModel : ViewModel() {
 
     private val itemPhotosArrayList = arrayListOf<String>()
 
+    private val _otherSizes = MutableLiveData<MutableMap<String, String>>()
+    val otherSizes : LiveData<MutableMap<String, String>>
+        get() = _otherSizes
+
+    private val otherSizesMap : MutableMap<String, String> = mutableMapOf()
+
     fun getItemPhotosArrayList() : ArrayList<String> {
         return itemPhotosArrayList
     }
@@ -54,30 +62,10 @@ class NewItemDetailsViewModel : ViewModel() {
 
 
 
-    fun sendToDatabase(array: Array<String>, categoryName: String?) {
+    fun sendToDatabase(array: Array<String>, categoryName: String?, inStock: Boolean) {
+        inStockk = inStock
         //first we will send photos to firebase storage
         //if that is successful then we will send Item to realtime database
-//        val photosUrl: ArrayList<String> = ArrayList()
-//
-//        for (photo in itemPhotosArrayList){
-//            val photoUri = photo.toUri()
-//            val currentImageRef = categoryImagesRef.child(categoryName!!).child(photoUri.lastPathSegment.toString())
-//            val uploadTask = currentImageRef.putFile(photoUri)
-//
-//            uploadTask.continueWithTask {
-//                task -> if (!task.isSuccessful){
-//                    task.exception?.let {
-//                        throw it
-//                    }
-//                }
-//                currentImageRef.downloadUrl
-//            }.addOnCompleteListener {
-//                if(it.isSuccessful){
-//                    val downloadUrl = it.result
-//                    photosUrl.add(downloadUrl.toString())
-//                }
-//            }
-//        }
 
         itemInfo = array
         uploadImages(ArrayList<String>(), itemPhotosArrayList, categoryName)
@@ -127,7 +115,7 @@ class NewItemDetailsViewModel : ViewModel() {
         val itemReference = database.child("categoryWiseItems").child(categoryName!!)
         val key = itemReference.push().key ?: return
 
-        val item = Item(itemInfo[0], itemInfo[1], itemInfo[2], itemInfo[3], itemInfo[4], itemInfo[5], arrayList, key, 0, 0)
+        val item = Item(itemInfo[0], itemInfo[1], itemInfo[2], itemInfo[3], itemInfo[4], itemInfo[5], arrayList, key, 0, 0, inStockk!!, otherSizesMap)
 
         itemReference.child(key).setValue(item).addOnCompleteListener {
             if (it.isSuccessful){
@@ -159,6 +147,17 @@ class NewItemDetailsViewModel : ViewModel() {
         _itemImages.value = itemPhotosArrayList
     }
 
+    fun addToOtherSizes(size: String, price: String) {
+        Log.e("656565", "item size = $size, item price = $price")
+        otherSizesMap[size] = price
+        _otherSizes.value = otherSizesMap
+    }
+
+    fun removeOtherSize(size: String) {
+        otherSizesMap.remove(size)
+        _otherSizes.value = otherSizesMap
+    }
+
     @Parcelize
-    data class Item(val name: String = "",val qty: String = "", val price: String = "", val discount: String = "", val description: String = "", val deliveryDuration: String = "", val photosUrl: ArrayList<String> = ArrayList(), val key: String? = "", val ratingTotal: Long = 0L, val peopleRatingCount: Long = 0L) : Parcelable
+    data class Item(val name: String = "",val size: String = "", val price: String = "", val discount: String = "", val description: String = "", val deliveryDuration: String = "", val photosUrl: ArrayList<String> = ArrayList(), val key: String? = "", val ratingTotal: Long = 0L, val peopleRatingCount: Long = 0L, val inStock: Boolean = true, val otherSizes: MutableMap<String, String> = mutableMapOf()) : Parcelable
 }
