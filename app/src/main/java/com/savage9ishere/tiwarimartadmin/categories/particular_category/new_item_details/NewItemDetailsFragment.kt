@@ -8,11 +8,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.savage9ishere.tiwarimartadmin.R
 import com.savage9ishere.tiwarimartadmin.databinding.NewItemDetailsFragmentBinding
 
 const val REQUEST_IMAGE_GET = 1
@@ -25,6 +28,7 @@ class NewItemDetailsFragment : Fragment() {
 
     private lateinit var viewModel: NewItemDetailsViewModel
     private var inStock = true
+    private var timeUnit : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -101,6 +105,13 @@ class NewItemDetailsFragment : Fragment() {
                 somethingIsEmpty = true
             }
 
+            if (timeUnit == null || timeUnit == "Select unit"){
+                Toast.makeText(context, "Select time unit for delivery duration", Toast.LENGTH_SHORT).show()
+                somethingIsEmpty = true
+            }
+
+            array[5] = array[5] + " " + timeUnit
+
             if(!somethingIsEmpty){
                 //now we can send items to database
                 viewModel.sendToDatabase(array, categoryName, inStock)
@@ -127,10 +138,31 @@ class NewItemDetailsFragment : Fragment() {
             addNewSizeButton.visibility = View.GONE
         }
 
+        val timeUnitSpinner = binding.timeUnitSpinner
+        val list = listOf("Select unit", "Minutes", "Hours", "Days")
+        val timeUnitAdapter = ArrayAdapter(requireContext(), R.layout.spinner_item, list)
+        timeUnitSpinner.adapter = timeUnitAdapter
+        timeUnitSpinner.setSelection(0)
+
+        timeUnitSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                timeUnit = parent?.getItemAtPosition(position).toString()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+        }
+
         viewModel.otherSizes.observe(viewLifecycleOwner, {
             it?.let {
-                val list = it.toList()
-                if(list.isNotEmpty()){
+                val listt = it.toList()
+                if(listt.isNotEmpty()){
                    binding.newSizesRecyclerView.visibility = View.VISIBLE
                 }
                 else{
