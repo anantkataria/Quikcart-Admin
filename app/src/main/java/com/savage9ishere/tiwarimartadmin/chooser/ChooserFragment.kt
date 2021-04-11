@@ -28,6 +28,10 @@ class ChooserFragment : Fragment() {
             findNavController().navigate(R.id.action_chooserFragment_to_categoriesFragment)
         }
 
+        binding.ordersButton.setOnClickListener {
+            findNavController().navigate(R.id.action_chooserFragment_to_ordersFragment)
+        }
+
         return binding.root
     }
 

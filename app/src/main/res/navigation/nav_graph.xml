@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_chooserFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_chooserFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
@@ -63,4 +66,25 @@
         android:id="@+id/updateParticularItemFragment"
         android:name="com.savage9ishere.tiwarimartadmin.categories.particular_category.update_particular_item.UpdateParticularItemFragment"
         android:label="UpdateParticularItemFragment" />
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.orders.OrdersFragment"
+        android:label="orders_fragment"
+        tools:layout="@layout/orders_fragment" >
+        <action
+            android:id="@+id/action_ordersFragment_to_particularOrderFragment"
+            app:destination="@id/particularOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/particularOrderFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.orders.particular_order.ParticularOrderFragment"
+        android:label="ParticularOrderFragment" >
+        <action
+            android:id="@+id/action_particularOrderFragment_to_cancellationReasonFragment"
+            app:destination="@id/cancellationReasonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cancellationReasonFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.orders.particular_order.CancellationReasonFragment"
+        android:label="CancellationReasonFragment" />
 </navigation>

@@ -3,4 +3,12 @@
     <string name="get_it_by_thursday_march_18">Get it by <b>Thursday, May 18</b></string>
     <string name="rupee_symbol">₹</string>
     <string name="item_photo">item_photo</string>
+    <string name="item_address_format">Shipping to: <b>%s</b></string>
+    <string name="item_delivery_time_format">delivery: <b>%s</b></string>
+    <string name="item_bill_amount_format">Items:              ₹ %s\nDelivery:           ₹ %s\nTotal:              ₹ %s</string>
+    <string name="item_save_amount_format">Savings: ₹ %s</string>
+    <string name="item_payment_method_format">Payment Method: %s</string>
+    <string name="item_auth_phone_format">Auth Phone: %s</string>
+    <string name="item_order_placed_time_format">Order Placed: %s</string>
+    <string name="item_order_status_format">STATUS : %s</string>
 </resources>

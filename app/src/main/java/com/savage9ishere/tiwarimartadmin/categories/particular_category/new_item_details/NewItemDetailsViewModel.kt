@@ -115,6 +115,8 @@ class NewItemDetailsViewModel : ViewModel() {
         val itemReference = database.child("categoryWiseItems").child(categoryName!!)
         val key = itemReference.push().key ?: return
 
+        otherSizesMap[itemInfo[1]] = itemInfo[2]
+
         val item = Item(itemInfo[0], itemInfo[1], itemInfo[2], itemInfo[3], itemInfo[4], itemInfo[5], arrayList, key, 0, 0, inStockk!!, otherSizesMap)
 
         itemReference.child(key).setValue(item).addOnCompleteListener {

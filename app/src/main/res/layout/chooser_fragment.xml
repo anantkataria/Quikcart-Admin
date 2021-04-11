@@ -15,9 +15,19 @@
         tools:context=".chooser.ChooserFragment">
 
         <Button
+            android:layout_margin="8dp"
             android:id="@+id/categories_button"
             android:text="Categories"
             android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="Orders"
+            android:layout_below="@+id/categories_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:id="@+id/orders_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
