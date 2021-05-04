@@ -68,7 +68,7 @@ class NewItemDetailsViewModel : ViewModel() {
         //if that is successful then we will send Item to realtime database
 
         itemInfo = array
-        uploadImages(ArrayList<String>(), itemPhotosArrayList, categoryName)
+        uploadImages(ArrayList(), itemPhotosArrayList, categoryName)
 
     }
 

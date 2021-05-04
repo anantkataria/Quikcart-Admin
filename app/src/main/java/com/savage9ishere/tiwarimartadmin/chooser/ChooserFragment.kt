@@ -25,11 +25,18 @@ class ChooserFragment : Fragment() {
         val binding = ChooserFragmentBinding.inflate(inflater)
 
         binding.categoriesButton.setOnClickListener {
-            findNavController().navigate(R.id.action_chooserFragment_to_categoriesFragment)
+            if (findNavController().currentDestination?.id == R.id.chooserFragment)
+                findNavController().navigate(R.id.action_chooserFragment_to_categoriesFragment)
         }
 
         binding.ordersButton.setOnClickListener {
-            findNavController().navigate(R.id.action_chooserFragment_to_ordersFragment)
+            if (findNavController().currentDestination?.id == R.id.chooserFragment)
+                findNavController().navigate(R.id.action_chooserFragment_to_ordersFragment)
+        }
+
+        binding.closeOpenStoreButton.setOnClickListener {
+            if (findNavController().currentDestination?.id == R.id.chooserFragment)
+                findNavController().navigate(R.id.action_chooserFragment_to_closeStoreFragment)
         }
 
         return binding.root

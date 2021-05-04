@@ -7,7 +7,6 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.savage9ishere.tiwarimartadmin.databinding.ItemPhotoListItemBinding
 
 class ItemPhotosAdapter(private val onLongClick: (position: Int) -> Unit) : ListAdapter<String, ItemPhotosAdapter.ViewHolder>(ItemPhotosDiffCallback()){

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_chooserFragment_to_ordersFragment"
             app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_chooserFragment_to_closeStoreFragment"
+            app:destination="@id/closeStoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
@@ -87,4 +90,18 @@
         android:id="@+id/cancellationReasonFragment"
         android:name="com.savage9ishere.tiwarimartadmin.orders.particular_order.CancellationReasonFragment"
         android:label="CancellationReasonFragment" />
+    <fragment
+        android:id="@+id/closeStoreFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.close_store.CloseStoreFragment"
+        android:label="close_store_fragment"
+        tools:layout="@layout/close_store_fragment" >
+        <action
+            android:id="@+id/action_closeStoreFragment_to_closingReasonFragment"
+            app:destination="@id/closingReasonFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/closingReasonFragment"
+        android:name="com.savage9ishere.tiwarimartadmin.close_store.closing_reason.ClosingReasonFragment"
+        android:label="closing_reason_fragment"
+        tools:layout="@layout/closing_reason_fragment" />
 </navigation>

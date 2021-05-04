@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".close_store.CloseStoreFragment">
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/open_close_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OPEN"
+            android:gravity="center"
+            android:textSize="100sp" />
+
+        <Button
+            android:visibility="invisible"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="8dp"
+            android:id="@+id/notice_button"
+            android:text="Notice"
+            android:layout_above="@id/close_open_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:visibility="invisible"
+            android:id="@+id/close_open_button"
+            android:text="Close Store"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="32dp"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</layout>

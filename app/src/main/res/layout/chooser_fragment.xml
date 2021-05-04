@@ -26,10 +26,20 @@
             android:text="Orders"
             android:layout_below="@+id/categories_button"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_margin="8dp"
             android:id="@+id/orders_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
+        <Button
+            android:text="Close/Open Store"
+            android:layout_below="@+id/orders_button"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            android:id="@+id/close_open_store_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
 
     </RelativeLayout>
 </layout>
