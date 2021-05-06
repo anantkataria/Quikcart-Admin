@@ -3,28 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/chooserFragment">
+    app:startDestination="@id/ordersFragment">
 
-    <fragment
-        android:id="@+id/chooserFragment"
-        android:name="com.savage9ishere.tiwarimartadmin.chooser.ChooserFragment"
-        android:label="chooser_fragment"
-        tools:layout="@layout/chooser_fragment" >
-        <action
-            android:id="@+id/action_chooserFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment" />
-        <action
-            android:id="@+id/action_chooserFragment_to_ordersFragment"
-            app:destination="@id/ordersFragment" />
-        <action
-            android:id="@+id/action_chooserFragment_to_closeStoreFragment"
-            app:destination="@id/closeStoreFragment" />
-    </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.savage9ishere.tiwarimartadmin.categories.CategoriesFragment"
-        android:label="categories_fragment"
-        tools:layout="@layout/categories_fragment" >
+        android:label="Categories"
+        tools:layout="@layout/categories_fragment">
         <action
             android:id="@+id/action_categoriesFragment_to_newCategoryDetailsFragment"
             app:destination="@id/newCategoryDetailsFragment" />
@@ -35,7 +20,7 @@
     <fragment
         android:id="@+id/newCategoryDetailsFragment"
         android:name="com.savage9ishere.tiwarimartadmin.categories.new_category_details.NewCategoryDetailsFragment"
-        android:label="new_category_details_fragment"
+        android:label="New Category"
         tools:layout="@layout/new_category_details_fragment" />
     <fragment
         android:id="@+id/particularCategoryFragment"
@@ -58,7 +43,7 @@
     <fragment
         android:id="@+id/newItemDetailsFragment"
         android:name="com.savage9ishere.tiwarimartadmin.categories.particular_category.new_item_details.NewItemDetailsFragment"
-        android:label="new_item_details_fragment"
+        android:label="New Item"
         tools:layout="@layout/new_item_details_fragment" />
     <fragment
         android:id="@+id/updateParticularCategoryFragment"
@@ -72,8 +57,8 @@
     <fragment
         android:id="@+id/ordersFragment"
         android:name="com.savage9ishere.tiwarimartadmin.orders.OrdersFragment"
-        android:label="orders_fragment"
-        tools:layout="@layout/orders_fragment" >
+        android:label="Orders"
+        tools:layout="@layout/orders_fragment">
         <action
             android:id="@+id/action_ordersFragment_to_particularOrderFragment"
             app:destination="@id/particularOrderFragment" />
@@ -81,7 +66,7 @@
     <fragment
         android:id="@+id/particularOrderFragment"
         android:name="com.savage9ishere.tiwarimartadmin.orders.particular_order.ParticularOrderFragment"
-        android:label="ParticularOrderFragment" >
+        android:label="Particular Order">
         <action
             android:id="@+id/action_particularOrderFragment_to_cancellationReasonFragment"
             app:destination="@id/cancellationReasonFragment" />
@@ -89,12 +74,12 @@
     <fragment
         android:id="@+id/cancellationReasonFragment"
         android:name="com.savage9ishere.tiwarimartadmin.orders.particular_order.CancellationReasonFragment"
-        android:label="CancellationReasonFragment" />
+        android:label="Cancellation Reason" />
     <fragment
         android:id="@+id/closeStoreFragment"
         android:name="com.savage9ishere.tiwarimartadmin.close_store.CloseStoreFragment"
-        android:label="close_store_fragment"
-        tools:layout="@layout/close_store_fragment" >
+        android:label="Store"
+        tools:layout="@layout/close_store_fragment">
         <action
             android:id="@+id/action_closeStoreFragment_to_closingReasonFragment"
             app:destination="@id/closingReasonFragment" />
@@ -102,6 +87,6 @@
     <fragment
         android:id="@+id/closingReasonFragment"
         android:name="com.savage9ishere.tiwarimartadmin.close_store.closing_reason.ClosingReasonFragment"
-        android:label="closing_reason_fragment"
+        android:label="Closing Reason"
         tools:layout="@layout/closing_reason_fragment" />
 </navigation>

@@ -21,10 +21,16 @@
 
         <EditText
             android:id="@+id/status_edit_text"
-            android:layout_below="@id/hardcoded"
-            android:layout_margin="8dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="150dp"
+            android:layout_below="@id/hardcoded"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/order_details_background"
+            android:backgroundTint="@color/light_grey"
+            android:padding="10dp" />
 
         <Button
             android:id="@+id/upload_button"

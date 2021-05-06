@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="order_details_hardcoded">
+        <item name="color">@color/dark_grey</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>
+
+    <style name="order_details">
+    <item name="color">@color/dark_grey</item>
+    <item name="textAllCaps">false</item>
+        <item name="android:textSize">16sp</item></style>
+</resources>

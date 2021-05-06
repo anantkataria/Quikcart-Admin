@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +30,8 @@ class ParticularCategoryFragment : Fragment() {
         val categoryName : String? = requireArguments().getString("name")
         val categoryImageUri : String? = requireArguments().getString("uri")
         val categoryKey : String? = requireArguments().getString("key")
+
+        (activity as AppCompatActivity).supportActionBar?.title = categoryName
 
 //        setHasOptionsMenu(true)
 

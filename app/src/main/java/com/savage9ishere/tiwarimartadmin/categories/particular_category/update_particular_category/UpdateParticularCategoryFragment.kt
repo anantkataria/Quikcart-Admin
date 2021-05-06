@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -35,6 +36,8 @@ class UpdateParticularCategoryFragment : Fragment() {
         val categoryName = requireArguments().getString("name")
         val categoryImageURL = requireArguments().getString("uri")
         val categoryKey = requireArguments().getString("key")
+
+        (activity as AppCompatActivity).supportActionBar?.title = categoryName
 
         viewModel = ViewModelProvider(this).get(UpdateParticularCategoryViewModel::class.java)
 
