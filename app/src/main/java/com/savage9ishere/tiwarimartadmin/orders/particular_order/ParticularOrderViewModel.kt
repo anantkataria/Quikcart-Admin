@@ -71,6 +71,10 @@ class ParticularOrderViewModel(
     val status : LiveData<String?>
         get() = _status
 
+    private val _deliveryInstructions = MutableLiveData<String?>()
+    val deliveryInstructions : LiveData<String?>
+        get() = _deliveryInstructions
+
     init {
         val addresss = address.getAddress()
         _itemAddress.value = addresss
@@ -115,6 +119,7 @@ class ParticularOrderViewModel(
         }
 
         _deliveryTime.value = deliveryTime
+        _deliveryInstructions.value = address.deliveryInstructions
 
         var billAmountTotal = 0
         var billTotalOriginal = 0

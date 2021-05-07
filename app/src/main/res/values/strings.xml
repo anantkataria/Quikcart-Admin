@@ -11,4 +11,5 @@
     <string name="item_auth_phone_format">Auth Phone: %s</string>
     <string name="item_order_placed_time_format">Order Placed: %s</string>
     <string name="item_order_status_format">STATUS : %s</string>
+    <string name="item_delivery_instructions_format">Delivery Instructions : %s</string>
 </resources>

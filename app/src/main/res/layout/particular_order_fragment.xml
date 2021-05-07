@@ -139,6 +139,7 @@
                     android:layout_below="@+id/order_placed_time_text"
                     android:id="@+id/status_text_view"
                     android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     style="@style/order_details"
 
                     android:layout_width="match_parent"
@@ -152,12 +153,21 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
                     android:text="@{@string/item_delivery_time_format(viewModel.deliveryTime)}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     />
 
-
+                <TextView
+                    android:id="@+id/delivery_instructions_text_View"
+                    style="@style/order_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@{@string/item_delivery_instructions_format(viewModel.deliveryInstructions)}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    />
 
             </LinearLayout>
 
