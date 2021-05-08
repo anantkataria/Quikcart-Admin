@@ -53,7 +53,7 @@
     <fragment
         android:id="@+id/updateParticularItemFragment"
         android:name="com.savage9ishere.tiwarimartadmin.categories.particular_category.update_particular_item.UpdateParticularItemFragment"
-        android:label="UpdateParticularItemFragment" />
+        android:label="Update Item" />
     <fragment
         android:id="@+id/ordersFragment"
         android:name="com.savage9ishere.tiwarimartadmin.orders.OrdersFragment"
